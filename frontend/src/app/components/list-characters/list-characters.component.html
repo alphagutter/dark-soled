@@ -1,0 +1,38 @@
+<div class="container">
+
+    <div class="title">
+      <h4>Characters</h4>
+    </div>
+    
+    <div class="buttons">
+      <button id="button" type="button" class="btn btn-success" routerLink="/new-character" >Add a Character</button>
+      <button id="button" type="button" class="btn btn-danger" routerLink="#" >Delete a Character</button>
+    </div>
+  
+  
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Role</th>
+              <th scope="col">Power</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let character of listCharacters" class="table-dark" >
+              <!--<th scope="row">Magician</th>-->
+              <td>{{ character.id }}</td>
+              <td>{{ character.name }}</td>
+              <td>{{ character.gender }}</td>
+              <td><img [src]="getImagePath(character.role)" alt="{{ character.role }} Icon"></td>
+              <td>{{ character.power }}</td>
+              <!--<td>
+                  <img src="assets/images/roles-icon/magician-icon.png">
+              </td>-->
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  

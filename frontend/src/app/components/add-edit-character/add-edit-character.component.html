@@ -1,0 +1,77 @@
+<div class="container">
+
+    <div class="title">
+    </div>
+    
+    <div class="buttons">
+        <button type="button" class="btn btn-success" routerLink="/character-list" >All Characters</button>
+    </div>
+  
+  
+    <!--d: number, name: string, sex: 
+    gender: string;
+    power: number;
+}-->
+
+
+    <div class="card text-white bg-info mb-3 offset-lg-4" style="max-width: 20rem;">
+        <div class="card-header">Create your Own Character</div>
+        <div class="card-body">
+            
+            
+            <form [formGroup]="form" (ngSubmit)="addCharacter()">
+
+
+                <label for="character-name">Name:</label>
+                <input formControlName="name" id="character-name" type="text" class="form-control" placeholder="">
+                <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">this field is 
+                    <strong>required</strong><br>
+                </span>
+
+
+                <label for="role" class="form-label mt-4">Select your Role</label>
+                <div *ngIf="listRoles && listRoles.length > 0" class="mb-3">
+                <select formControlName="role" class="form-select" id="role">
+                    <option *ngFor="let role of listRoles" [value]="role.name">{{ role.name }}</option>
+                </select>
+                <span *ngIf="form.get('role')?.hasError('required')">this field is 
+                    <strong>required</strong><br>
+                </span>
+                </div>
+                <div *ngIf="!listRoles || listRoles.length === 0">
+                No roles available.
+                </div>
+    
+
+                <label for="gender" class="form-label mt-4">Gender:</label>
+                <div class="mb-3">
+                    <select formControlName="gender" class="form-select" id="gender">
+                        <option *ngFor="let gender of genderOptions | keyvalue" [value]="gender.value">{{ gender.value }}</option>
+                    </select>
+                    <span *ngIf="form.get('gender')?.hasError('required')">this field is 
+                        <strong>required</strong><br>
+                    </span>
+                </div>
+
+
+
+
+
+                <!--el boton estará deshabilitado si es que no se cumplen los requisitos mínimos-->
+                <div class="column text-center mt-2">
+                    <button 
+                    [disabled]="form.invalid"  
+                    type="submit" class="btn btn-secondary">Create</button>
+                </div>
+
+            </form>
+
+
+  
+
+        </div>
+    </div>
+
+
+  </div>
+  

@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class="title">
+    <h4>Warrior Roles</h4>
+    <button type="button" class="btn btn-success" routerLink="/new-character" >Add a Character</button>
+  </div>
+
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Role</th>
+            <th scope="col">Attributes</th>
+            <th scope="col">Looks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of listRoles" class="table-dark" >
+            <!--<th scope="row">Magician</th>-->
+            <td>{{ role.name }}</td>
+            <td>{{ role.description }}</td>
+            <td><img [src]="getImagePath(role.name)" alt="{{ role.name }} Icon"></td>
+            <!--<td>
+                <img src="assets/images/roles-icon/magician-icon.png">
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+</div>
